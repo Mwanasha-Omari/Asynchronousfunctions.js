@@ -2,20 +2,18 @@
 //  log the message to the console after the specified delay time.
 
 
-function delay(time) {
-    let myPromise = new Promise(resolve => setTimeout(resolve, time));
-    return myPromise
-  }
-  async function messageDelay(message, delayTime) {
-    await delay(delayTime);
-    console.log(`Hello your message is delayed by ${delayTime} milliseconds`);
-  }
-  messageDelay("Hello, world!",1000);
+async function delayMessage(message,delay){
+  await new Promise(resolve =>
+  setTimeout(resolve,delay));
+   console.log(message)
+} 
+delayMessage("Your message will be replied in one second.",1000);
+    
 //  2 You have an array of user IDs and a function getUserData(id) that returns a Promise with
 //    user data when given a user ID. Write an asynchronous function that fetches and 
 //    logs the data for each user ID one by one, in sequence.
 
-function getUserData(id) {
+function getUserData(id){
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       const userData = { id, name: `Ali ${id}`, email: `ali${id}gmail.com` };
@@ -49,7 +47,7 @@ async function performTask() {
   else{
     reject('There is an error')
 }
-  })
+  });
 }
 function performTaskSuccessful() {
   performTask()
